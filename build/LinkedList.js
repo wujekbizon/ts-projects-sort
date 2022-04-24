@@ -23,5 +23,57 @@ class LinkedList {
         }
         tail.next = node;
     }
+    get length() {
+        if (!this.head) {
+            return 0;
+        }
+        let length = 1;
+        let node = this.head;
+        while (node.next) {
+            length++;
+            node = node.next;
+        }
+        return length;
+    }
+    at(index) {
+        if (!this.head) {
+            throw new Error('Index out of bounds');
+        }
+        let counter = 0;
+        // add type annotation
+        let node = this.head;
+        while (node) {
+            if (counter === index) {
+                return node;
+            }
+            counter++;
+            node = node.next;
+        }
+        throw new Error('Index out of bounds');
+    }
+    compare(leftIndex, rightIndex) {
+        if (!this.head) {
+            throw new Error('List is empty');
+        }
+        return this.at(leftIndex).data > this.at(rightIndex).data;
+    }
+    swap(leftIndex, rigthIndex) {
+        const leftNode = this.at(leftIndex);
+        const rightNode = this.at(rigthIndex);
+        const leftHand = leftNode.data;
+        leftNode.data = rightNode.data;
+        rightNode.data = leftHand;
+    }
+    print() {
+        if (!this.head) {
+            return;
+        }
+        // add type annotation
+        let node = this.head;
+        while (node) {
+            console.log(node.data);
+            node = node.next;
+        }
+    }
 }
 exports.LinkedList = LinkedList;
