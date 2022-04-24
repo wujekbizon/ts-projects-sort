@@ -42,6 +42,7 @@ export class LinkedList {
     }
 
     let counter = 0;
+    // add type annotation
     let node: Node | null = this.head;
     while (node) {
       if (counter === index) {
@@ -69,5 +70,18 @@ export class LinkedList {
     const leftHand = leftNode.data;
     leftNode.data = rightNode.data;
     rightNode.data = leftHand;
+  }
+
+  print(): void {
+    if (!this.head) {
+      return;
+    }
+
+    // add type annotation
+    let node: Node | null = this.head;
+    while (node) {
+      console.log(node.data);
+      node = node.next;
+    }
   }
 }
